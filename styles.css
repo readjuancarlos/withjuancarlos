@@ -713,6 +713,18 @@ a {
   margin: 1.6rem 0 !important;
 }
 
+.statement--center {
+  border-left: 0;
+  padding: 0;
+  margin: -0.5rem auto 2.25rem !important;
+  max-width: 34rem;
+  text-align: center;
+}
+
+.section--vision {
+  background: color-mix(in srgb, var(--cream-deep) 55%, var(--cream));
+}
+
 /* Pillars */
 .section--stand {
   background:
@@ -778,6 +790,45 @@ a {
 /* About */
 .section--about {
   padding-bottom: 5rem;
+}
+
+.about-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.about__portrait {
+  justify-self: center;
+  width: min(100%, 22rem);
+}
+
+.about__portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 18%;
+  border-top: 3px solid var(--navy);
+  box-shadow: 0 18px 36px color-mix(in srgb, var(--navy) 12%, transparent);
+}
+
+@media (min-width: 900px) {
+  .about-layout {
+    grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
+    align-items: start;
+    gap: 3.25rem;
+  }
+
+  .about__portrait {
+    justify-self: stretch;
+    width: auto;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+
+  .about__copy .section__head {
+    margin-bottom: 1.25rem;
+  }
 }
 
 .pullquote {
