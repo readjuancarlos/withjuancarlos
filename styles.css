@@ -133,6 +133,14 @@ a {
   color: var(--ink);
 }
 
+.nav a[aria-current="page"],
+.mobile-nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--navy) 55%, transparent);
+  text-underline-offset: 4px;
+}
+
 .nav__cta {
   background: var(--navy);
   color: var(--white) !important;
