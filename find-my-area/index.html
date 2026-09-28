@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find My MUSD Trustee Area | Juan Carlos Pineiro</title>
+    <meta
+      name="description"
+      content="Look up your home address to find your Morongo Unified School District trustee area, current trustee, 2026 candidates, and the state and federal districts that represent you."
+    />
+    <link rel="canonical" href="https://withjuancarlos.com/find-my-area/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://withjuancarlos.com/find-my-area/" />
+    <meta property="og:site_name" content="Juan Carlos for School Board" />
+    <meta property="og:title" content="Find My MUSD Trustee Area | Juan Carlos Pineiro" />
+    <meta
+      property="og:description"
+      content="Look up your home address to find your MUSD trustee area, current trustee, 2026 candidates, and the other districts that represent you."
+    />
+    <meta property="og:image" content="https://withjuancarlos.com/images/withjuancarlos-coverimage.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Find My MUSD Trustee Area | Juan Carlos Pineiro" />
+    <meta
+      name="twitter:description"
+      content="Look up your home address to find your MUSD trustee area, current trustee, 2026 candidates, and the other districts that represent you."
+    />
+    <meta name="twitter:image" content="https://withjuancarlos.com/images/withjuancarlos-coverimage.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Barlow+Condensed:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <style>
+      /*
+        Full-page tool shell: top nav (shared header) + a rail/map
+        app that fills the rest of the viewport on larger screens.
+        On small screens the rail and map stack and the page scrolls
+        normally.
+      */
+      html,
+      body {
+        background: var(--cream);
+      }
+
+      body.tool-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .tool-main {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+
+      musd-district-finder {
+        display: block;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+
+      @media (min-width: 900px) {
+        html,
+        body.tool-page {
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .tool-main {
+          height: calc(100vh - var(--header-h));
+          overflow: hidden;
+        }
+
+        musd-district-finder {
+          height: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="tool-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo" href="/">Juan Carlos</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="/#why">Why I’m Running</a>
+          <a href="/#stand-for">What I Stand For</a>
+          <a href="/#vision">Vision</a>
+          <a href="/#about">About</a>
+          <a href="/find-my-area/" aria-current="page">Find My Area</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
+          <a class="nav__cta" href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav id="mobile-nav" class="mobile-nav" hidden aria-label="Mobile">
+        <a href="/#why">Why I’m Running</a>
+        <a href="/#stand-for">What I Stand For</a>
+        <a href="/#vision">Vision</a>
+        <a href="/#about">About</a>
+        <a href="/find-my-area/" aria-current="page">Find My Area</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
+        <a href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
+      </nav>
+    </header>
+
+    <main id="main" class="tool-main">
+      <musd-district-finder></musd-district-finder>
+    </main>
+
+    <script src="/script.js"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+    <script src="/find-my-area/finder.js"></script>
+  </body>
+</html>
