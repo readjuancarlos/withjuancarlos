@@ -300,6 +300,10 @@ a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--navy);
+  text-wrap: balance;
+}
+.hero__district-area {
+  white-space: nowrap;
 }
 
 .hero__name {
