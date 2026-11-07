@@ -1193,63 +1193,6 @@ a {
   background: color-mix(in srgb, var(--cream-deep) 55%, var(--cream));
 }
 
-/* First 100 days steps (on navy) */
-.steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  counter-reset: step;
-  display: grid;
-  gap: 1.35rem;
-}
-
-.steps li {
-  counter-increment: step;
-  position: relative;
-  padding-left: 3.6rem;
-}
-
-.steps li::before {
-  content: counter(step);
-  position: absolute;
-  left: 0;
-  top: -0.1rem;
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  font-family: var(--font-condensed);
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--navy);
-  background: var(--cream);
-}
-
-.steps h3 {
-  margin: 0 0 0.3rem;
-  font-family: var(--font-condensed);
-  font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--cream);
-}
-
-.steps p {
-  margin: 0;
-  color: color-mix(in srgb, var(--white) 86%, transparent);
-  font-size: 1.05rem;
-  line-height: 1.55;
-}
-
-.highlight__intro {
-  margin: 1rem 0 0;
-  color: color-mix(in srgb, var(--white) 88%, transparent);
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
 /* Sign-off */
 .signoff {
   text-align: center;
