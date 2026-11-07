@@ -124,10 +124,10 @@ if (openers.length && typeof HTMLDialogElement === "function") {
       </button>
 
       <div data-view="form">
-        <p class="eyebrow">Stay in the loop</p>
-        <h2 id="signup-modal-title">Get Updates</h2>
+        <p class="eyebrow">Our schools, together</p>
+        <h2 id="signup-modal-title">Come Along With Us</h2>
         <p class="signup__lede">
-          Short, plain-language updates on what I’m learning, how I vote, and why.
+          This is our community’s work, and you’re part of it. Come along as I serve, see what we’re building together, and help dream up what’s next for our kids.
         </p>
         <form class="signup-form" action="/api/subscribe" method="post" novalidate>
           <div class="signup-form__field">
@@ -142,7 +142,7 @@ if (openers.length && typeof HTMLDialogElement === "function") {
             <label for="modal-website">Leave this field empty</label>
             <input id="modal-website" name="website" type="text" tabindex="-1" autocomplete="off" />
           </div>
-          <button class="btn btn--primary" type="submit">Subscribe</button>
+          <button class="btn btn--primary" type="submit">Count Me In</button>
           <p class="signup-form__status" role="status" aria-live="polite"></p>
           <p class="signup-form__fine">
             You’ll get a confirmation email first. Unsubscribe any time. See the
