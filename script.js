@@ -89,7 +89,7 @@ function initSignupForm(form, onSuccess) {
           onSuccess();
         } else {
           show(
-            "Almost there! If this is your first time, check your inbox for a confirmation email and click the link inside to make it official.",
+            "Almost there! Check your inbox for a confirmation email and click the link inside to make it official.",
             "success"
           );
         }
@@ -157,8 +157,8 @@ if (openers.length && typeof HTMLDialogElement === "function") {
         </div>
         <h2 id="signup-modal-done-title">Almost There! Check Your Inbox</h2>
         <p class="signup__lede">
-          Thanks for coming along. If this is your first time, a confirmation email is on its way.
-          Click the link inside to make it official. Don’t see it? Peek in your spam folder.
+          Thanks for coming along. A confirmation email is on its way. Click the link inside to
+          make it official. Don’t see it? Peek in your spam folder.
         </p>
         <button class="btn btn--primary signup-modal__done" type="button">Done</button>
       </div>
