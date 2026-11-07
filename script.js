@@ -44,8 +44,8 @@ if ("IntersectionObserver" in window) {
   revealEls.forEach((el) => observer.observe(el));
 }
 
-// Newsletter signup: posts to /api/subscribe (the Kit API key stays on the server).
-document.querySelectorAll(".signup-form").forEach((form) => {
+// Newsletter signup: posts to /api/subscribe (the Kit API key stays server-side).
+function initSignupForm(form, onSuccess) {
   const status = form.querySelector(".signup-form__status");
   const button = form.querySelector("button[type='submit']");
 
@@ -59,10 +59,11 @@ document.querySelectorAll(".signup-form").forEach((form) => {
 
     const data = new FormData(form);
     const email = String(data.get("email") || "").trim();
+    const emailInput = form.querySelector("input[name='email']");
 
-    if (!email || !form.querySelector("input[name='email']").checkValidity()) {
+    if (!email || !emailInput.checkValidity()) {
       show("Please enter a valid email address.", "error");
-      form.querySelector("input[name='email']").focus();
+      emailInput.focus();
       return;
     }
 
@@ -83,10 +84,15 @@ document.querySelectorAll(".signup-form").forEach((form) => {
 
       if (response.ok) {
         form.reset();
-        show(
-          "Almost done. If this is your first time, check your inbox for a confirmation email.",
-          "success"
-        );
+        show("", "");
+        if (onSuccess) {
+          onSuccess();
+        } else {
+          show(
+            "Almost done. If this is your first time, check your inbox for a confirmation email.",
+            "success"
+          );
+        }
       } else {
         show(result.error || "Something went wrong. Please try again.", "error");
       }
@@ -96,4 +102,116 @@ document.querySelectorAll(".signup-form").forEach((form) => {
       button.disabled = false;
     }
   });
-});
+
+  return { reset: () => show("", "") };
+}
+
+// Inline forms on the page (homepage block, /updates)
+document.querySelectorAll(".signup-form").forEach((form) => initSignupForm(form));
+
+// "Get Updates" modal, opened from the header button on every page.
+// Without JS (or without <dialog> support) the link falls back to /updates/.
+const openers = document.querySelectorAll("[data-signup-open]");
+
+if (openers.length && typeof HTMLDialogElement === "function") {
+  const dialog = document.createElement("dialog");
+  dialog.className = "signup-modal";
+  dialog.setAttribute("aria-labelledby", "signup-modal-title");
+  dialog.innerHTML = `
+    <div class="signup-modal__panel">
+      <button class="signup-modal__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div data-view="form">
+        <p class="eyebrow">Stay in the loop</p>
+        <h2 id="signup-modal-title">Get Updates</h2>
+        <p class="signup__lede">
+          Short, plain-language updates on what I’m learning, how I vote, and why.
+        </p>
+        <form class="signup-form" action="/api/subscribe" method="post" novalidate>
+          <div class="signup-form__field">
+            <label for="modal-first-name">First name <span>(optional)</span></label>
+            <input id="modal-first-name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
+          </div>
+          <div class="signup-form__field">
+            <label for="modal-email">Email</label>
+            <input id="modal-email" name="email" type="email" autocomplete="email" inputmode="email" required />
+          </div>
+          <div class="signup__hp" aria-hidden="true">
+            <label for="modal-website">Leave this field empty</label>
+            <input id="modal-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+          <p class="signup-form__status" role="status" aria-live="polite"></p>
+          <p class="signup-form__fine">
+            You’ll get a confirmation email first. Unsubscribe any time. See the
+            <a href="/privacy">Privacy Policy</a>.
+          </p>
+        </form>
+      </div>
+
+      <div data-view="done" hidden>
+        <div class="signup-modal__check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h2 id="signup-modal-done-title">Check Your Inbox</h2>
+        <p class="signup__lede">
+          If this is your first time, you’ll get a confirmation email in a moment. Click the link
+          inside to finish signing up. Don’t see it? Check your spam folder.
+        </p>
+        <button class="btn btn--primary signup-modal__done" type="button">Done</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(dialog);
+
+  const formView = dialog.querySelector("[data-view='form']");
+  const doneView = dialog.querySelector("[data-view='done']");
+  const form = dialog.querySelector(".signup-form");
+
+  const modalForm = initSignupForm(form, () => {
+    formView.hidden = true;
+    doneView.hidden = false;
+    dialog.setAttribute("aria-labelledby", "signup-modal-done-title");
+    dialog.querySelector(".signup-modal__done").focus();
+  });
+
+  const openModal = () => {
+    formView.hidden = false;
+    doneView.hidden = true;
+    dialog.setAttribute("aria-labelledby", "signup-modal-title");
+    modalForm.reset();
+    document.body.style.overflow = "hidden";
+    dialog.showModal();
+    form.querySelector("input[name='first_name']").focus();
+  };
+
+  const closeModal = () => dialog.close();
+
+  dialog.addEventListener("close", () => {
+    document.body.style.overflow = "";
+  });
+
+  // <dialog> closes on Escape natively; this keeps it reliable across browsers
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeModal();
+    }
+  });
+
+  // Click on the backdrop (outside the panel) closes the modal
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeModal();
+  });
+  dialog.querySelector(".signup-modal__close").addEventListener("click", closeModal);
+  dialog.querySelector(".signup-modal__done").addEventListener("click", closeModal);
+
+  openers.forEach((opener) => {
+    opener.addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal();
+    });
+  });
+}
