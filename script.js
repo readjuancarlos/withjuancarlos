@@ -89,7 +89,7 @@ function initSignupForm(form, onSuccess) {
           onSuccess();
         } else {
           show(
-            "Almost done. If this is your first time, check your inbox for a confirmation email.",
+            "Almost there! If this is your first time, check your inbox for a confirmation email and click the link inside to make it official.",
             "success"
           );
         }
@@ -155,10 +155,10 @@ if (openers.length && typeof HTMLDialogElement === "function") {
         <div class="signup-modal__check" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
         </div>
-        <h2 id="signup-modal-done-title">Check Your Inbox</h2>
+        <h2 id="signup-modal-done-title">Almost There! Check Your Inbox</h2>
         <p class="signup__lede">
-          If this is your first time, you’ll get a confirmation email in a moment. Click the link
-          inside to finish signing up. Don’t see it? Check your spam folder.
+          Thanks for coming along. If this is your first time, a confirmation email is on its way.
+          Click the link inside to make it official. Don’t see it? Peek in your spam folder.
         </p>
         <button class="btn btn--primary signup-modal__done" type="button">Done</button>
       </div>
