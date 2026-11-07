@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Updates | Juan Carlos Pineiro · MUSD Area 5</title>
+    <meta
+      name="description"
+      content="Get short, plain-language updates from Juan Carlos Pineiro, Morongo Unified School District Area 5: what I'm learning, how I vote, and why."
+    />
+    <link rel="canonical" href="https://withjuancarlos.com/updates/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://withjuancarlos.com/updates/" />
+    <meta property="og:site_name" content="Juan Carlos for School Board" />
+    <meta property="og:title" content="Get Updates | Juan Carlos Pineiro · MUSD Area 5" />
+    <meta
+      property="og:description"
+      content="Short, plain-language updates on what I'm learning, how I vote, and why."
+    />
+    <meta property="og:image" content="https://withjuancarlos.com/images/withjuancarlos-coverimage.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Barlow+Condensed:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo" href="/">Juan Carlos</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="/#why">Why I’m Running</a>
+          <a href="/#stand-for">What I Stand For</a>
+          <a href="/#vision">Vision</a>
+          <a href="/#about">About</a>
+          <a href="/find-my-area/">Find My Area</a>
+          <a href="/updates/" aria-current="page">Get Updates</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
+          <a class="nav__cta" href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav id="mobile-nav" class="mobile-nav" hidden aria-label="Mobile">
+        <a href="/#why">Why I’m Running</a>
+        <a href="/#stand-for">What I Stand For</a>
+        <a href="/#vision">Vision</a>
+        <a href="/#about">About</a>
+        <a href="/find-my-area/">Find My Area</a>
+        <a href="/updates/" aria-current="page">Get Updates</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
+        <a href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="signup signup--page" aria-labelledby="signup-heading">
+        <div class="wrap narrow signup__inner">
+          <p class="eyebrow">Stay in the loop</p>
+          <h1 id="signup-heading">Get Updates</h1>
+          <p class="signup__lede">
+            Short, plain-language updates on what I’m learning, how I vote, and why. Kids come
+            first, and you shouldn’t have to guess where I stand.
+          </p>
+          <form class="signup-form" action="/api/subscribe" method="post" novalidate>
+            <div class="signup-form__field">
+              <label for="signup-first-name">First name <span>(optional)</span></label>
+              <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
+            </div>
+            <div class="signup-form__field">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" name="email" type="email" autocomplete="email" inputmode="email" required />
+            </div>
+            <div class="signup__hp" aria-hidden="true">
+              <label for="signup-website">Leave this field empty</label>
+              <input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+            <p class="signup-form__status" role="status" aria-live="polite"></p>
+            <p class="signup-form__fine">
+              You’ll get a confirmation email first. Unsubscribe any time. See the
+              <a href="/privacy">Privacy Policy</a>.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap site-footer__inner">
+        <div>
+          <p class="site-footer__name">Juan Carlos Pineiro</p>
+          <p>Candidate for MUSD School Board · Area 5</p>
+        </div>
+        <div class="social" aria-label="Social links">
+          <a href="https://x.com/withjuancarlos" target="_blank" rel="noopener noreferrer" aria-label="Juan Carlos on X">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </a>
+          <a href="https://instagram.com/withjuancarlos" target="_blank" rel="noopener noreferrer" aria-label="Juan Carlos on Instagram">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+        <p class="site-footer__fine">
+          Paid for by Juan Carlos Pineiro for Morongo Unified School District Trustee Area 5 2026 &nbsp;·&nbsp;
+          <a href="/privacy" style="text-decoration:underline;color:inherit;opacity:0.8;">Privacy Policy</a>
+          &nbsp;·&nbsp;
+          <a href="/terms" style="text-decoration:underline;color:inherit;opacity:0.8;">Terms</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

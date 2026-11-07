@@ -52,6 +52,7 @@
           <a href="#vision">Vision</a>
           <a href="#about">About</a>
           <a href="/find-my-area/">Find My Area</a>
+          <a href="/updates/">Get Updates</a>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
           <a class="nav__cta" href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
         </nav>
@@ -72,6 +73,7 @@
         <a href="#vision">Vision</a>
         <a href="#about">About</a>
         <a href="/find-my-area/">Find My Area</a>
+        <a href="/updates/">Get Updates</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNt7q-qODBPNG1CRaS87vK6MLvmuEFH0cmsAotf33Qz4x95Q/viewform" target="_blank" rel="noopener noreferrer">Volunteer</a>
         <a href="https://goodchange.app/donate/standwithjc" target="_blank" rel="noopener noreferrer">Donate</a>
       </nav>
@@ -355,6 +357,36 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="signup" id="updates" aria-labelledby="signup-heading">
+        <div class="wrap narrow signup__inner">
+          <p class="eyebrow">Stay in the loop</p>
+          <h2 id="signup-heading">Get Updates</h2>
+          <p class="signup__lede">
+            Short, plain-language updates on what I’m learning, how I vote, and why. No spam.
+          </p>
+          <form class="signup-form" action="/api/subscribe" method="post" novalidate>
+            <div class="signup-form__field">
+              <label for="signup-first-name">First name <span>(optional)</span></label>
+              <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
+            </div>
+            <div class="signup-form__field">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" name="email" type="email" autocomplete="email" inputmode="email" required />
+            </div>
+            <div class="signup__hp" aria-hidden="true">
+              <label for="signup-website">Leave this field empty</label>
+              <input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+            <p class="signup-form__status" role="status" aria-live="polite"></p>
+            <p class="signup-form__fine">
+              You’ll get a confirmation email first. Unsubscribe any time. See the
+              <a href="/privacy">Privacy Policy</a>.
+            </p>
+          </form>
         </div>
       </section>
 

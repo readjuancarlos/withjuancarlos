@@ -43,3 +43,57 @@ if ("IntersectionObserver" in window) {
 
   revealEls.forEach((el) => observer.observe(el));
 }
+
+// Newsletter signup: posts to /api/subscribe (the Kit API key stays on the server).
+document.querySelectorAll(".signup-form").forEach((form) => {
+  const status = form.querySelector(".signup-form__status");
+  const button = form.querySelector("button[type='submit']");
+
+  const show = (message, state) => {
+    status.textContent = message;
+    status.dataset.state = state;
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const email = String(data.get("email") || "").trim();
+
+    if (!email || !form.querySelector("input[name='email']").checkValidity()) {
+      show("Please enter a valid email address.", "error");
+      form.querySelector("input[name='email']").focus();
+      return;
+    }
+
+    button.disabled = true;
+    show("Subscribing…", "pending");
+
+    try {
+      const response = await fetch(form.getAttribute("action"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          first_name: String(data.get("first_name") || "").trim(),
+          website: String(data.get("website") || ""),
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        form.reset();
+        show(
+          "Almost done. If this is your first time, check your inbox for a confirmation email.",
+          "success"
+        );
+      } else {
+        show(result.error || "Something went wrong. Please try again.", "error");
+      }
+    } catch {
+      show("Couldn’t reach the server. Please try again.", "error");
+    } finally {
+      button.disabled = false;
+    }
+  });
+});

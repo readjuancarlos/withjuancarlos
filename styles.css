@@ -849,6 +849,121 @@ a {
   margin: 1.5rem 0 !important;
 }
 
+/* Signup */
+.signup {
+  background: var(--cream-deep);
+  color: var(--ink);
+  padding: 4.5rem 0;
+  text-align: center;
+}
+
+.signup h1,
+.signup h2 {
+  margin-bottom: 0.75rem;
+}
+
+.signup__lede {
+  max-width: 30rem;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.signup-form {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 28rem;
+  margin: 1.75rem auto 0;
+  text-align: left;
+}
+
+.signup-form__field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.signup-form label {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.signup-form label span {
+  font-weight: 600;
+  opacity: 0.65;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"] {
+  width: 100%;
+  min-height: 3.05rem;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--white);
+  border: 2px solid color-mix(in srgb, var(--navy) 28%, transparent);
+  border-radius: 0.75rem;
+}
+
+.signup-form input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--navy) 45%, transparent);
+  outline-offset: 2px;
+  border-color: var(--navy);
+}
+
+.signup-form .btn {
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.signup-form .btn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}
+
+.signup-form__status {
+  margin: 0;
+  min-height: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  color: var(--navy);
+}
+
+.signup-form__status[data-state="error"] {
+  color: #9b1c1c;
+}
+
+.signup-form__fine {
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.signup-form__fine a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Honeypot: hidden from people, visible to bots */
+.signup__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.signup--page {
+  padding: 5rem 0 6rem;
+  min-height: 60vh;
+}
+
 /* Join */
 .join {
   background: var(--navy);
