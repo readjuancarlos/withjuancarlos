@@ -816,6 +816,10 @@ a {
   font-size: 1.04rem;
 }
 
+.pillar__action {
+  margin-top: 1.1rem;
+}
+
 /* About */
 .section--about {
   padding-bottom: 5rem;
