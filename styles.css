@@ -1094,6 +1094,60 @@ a {
   min-height: 60vh;
 }
 
+/* Join (social landing) page */
+.hero--landing .signup-form {
+  margin-top: 1.25rem;
+}
+
+.hero--landing .hero__message {
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 920px) {
+  .hero--landing .signup-form,
+  .hero--landing .signup-done {
+    margin-left: 0;
+    max-width: 26rem;
+  }
+
+  .hero--landing .signup-done,
+  .hero--landing .signup-form__status,
+  .hero--landing .signup-form__fine {
+    text-align: left;
+  }
+
+  .hero--landing .signup-modal__check {
+    margin-left: 0;
+  }
+}
+
+.signup-form[hidden] {
+  display: none;
+}
+
+.signup-done {
+  max-width: 28rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  outline: none;
+}
+
+.signup-done h2 {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.signup-done p {
+  margin: 0;
+  color: var(--muted);
+}
+
 /* Welcome (post-confirmation) page */
 .welcome-hero {
   position: relative;
