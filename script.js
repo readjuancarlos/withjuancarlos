@@ -106,8 +106,21 @@ function initSignupForm(form, onSuccess) {
   return { reset: () => show("", "") };
 }
 
-// Inline forms on the page (homepage block, /updates)
-document.querySelectorAll(".signup-form").forEach((form) => initSignupForm(form));
+// Inline forms on the page (homepage block, /updates, /join).
+// On the /join landing page each form has a sibling .signup-done panel that replaces it on success.
+document.querySelectorAll(".signup-form").forEach((form) => {
+  const done = form.parentElement.querySelector(".signup-done");
+  initSignupForm(
+    form,
+    done
+      ? () => {
+          form.hidden = true;
+          done.hidden = false;
+          done.focus();
+        }
+      : undefined
+  );
+});
 
 // "Get Updates" modal, opened from the header button on every page.
 // Without JS (or without <dialog> support) the link falls back to /updates/.
